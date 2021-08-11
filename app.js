@@ -15,7 +15,7 @@ const imageNames = [
   'breakfast',
   'bubblegum',
   'chair',
-  'cthulu',
+  'cthulhu',
   'dog-duck',
   'dragon',
   'pen',
@@ -37,11 +37,17 @@ for(let i = 0; i < imageNames.length; i++) {
 
 console.log(products);
 
-// populate 3 products side by side
+// populate 3 random products side by side
 let optionOne = document.getElementById('option-1');
 let optionTwo = document.getElementById('option-2');
 let optionThree = document.getElementById('option-3');
 
-optionOne.setAttribute('src', products[0].filePath);
-optionTwo.setAttribute('src', products[1].filePath);
-optionThree.setAttribute('src', products[2].filePath);
+optionOne.setAttribute('src', products[generateRandomIndex(products)].filePath);
+optionTwo.setAttribute('src', products[generateRandomIndex(products)].filePath);
+optionThree.setAttribute('src', products[generateRandomIndex(products)].filePath);
+
+function generateRandomIndex(array){
+  let min = 0;
+  let max = array.length;
+  return Math.floor(Math.random() * (max - min + 1));
+}
