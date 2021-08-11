@@ -38,28 +38,42 @@ for(let i = 0; i < imageNames.length; i++) {
 console.log(products);
 
 // populate 3 random products side by side
-let optionOne = document.getElementById('option-1');
-let optionTwo = document.getElementById('option-2');
-let optionThree = document.getElementById('option-3');
+let optionOneImage = document.getElementById('option-1');
+let optionTwoImage = document.getElementById('option-2');
+let optionThreeImage = document.getElementById('option-3');
 
-let randomIndexOne = generateRandomIndex(products);
-let randomIndexTwo = generateRandomIndex(products);
-let randomIndexThree = generateRandomIndex(products);
+function populate() {
+  let randomIndexOne = generateRandomIndex(products);
+  let randomIndexTwo = generateRandomIndex(products);
+  let randomIndexThree = generateRandomIndex(products);
+  
+  let optionOne = products[randomIndexOne];
+  optionOne.timesShown++;
+  console.log(`${optionOne.name} was shown`,optionOne.timesShown);
+  let optionTwo = products[randomIndexTwo];
+  optionTwo.timesShown++;
+  console.log(`${optionTwo.name} was shown`, optionTwo.timesShown);
+  let optionThree = products[randomIndexThree];
+  optionThree.timesShown++;
+  console.log(`${optionThree.name} was shown`, optionThree.timesShown);
+  
+  optionOneImage.setAttribute('src', optionOne.filePath);
+  optionOneImage.setAttribute('alt', optionOne.name);
+  optionTwoImage.setAttribute('src', optionTwo.filePath);
+  optionTwoImage.setAttribute('alt', optionTwo.name);
+  optionThreeImage.setAttribute('src', optionThree.filePath);
+  optionThreeImage.setAttribute('alt', optionThree.name);
+}
 
-optionOne.setAttribute('src', products[randomIndexOne].filePath);
-optionOne.setAttribute('alt', products[randomIndexOne].name);
-optionTwo.setAttribute('src', products[randomIndexTwo].filePath);
-optionTwo.setAttribute('alt', products[randomIndexTwo].name);
-optionThree.setAttribute('src', products[randomIndexThree].filePath);
-optionThree.setAttribute('alt', products[randomIndexThree].name);
+populate();
 
-optionOne.addEventListener('click', handleClick);
-optionTwo.addEventListener('click', handleClick);
-optionThree.addEventListener('click', handleClick);
+optionOneImage.addEventListener('click', handleClick);
+optionTwoImage.addEventListener('click', handleClick);
+optionThreeImage.addEventListener('click', handleClick);
 
 function handleClick(event) {
-  console.log(`${event.target.alt} was clicked`);
-
+  populate();
+  // console.log(`${event.target.alt} was clicked`);
 } 
 
 function generateRandomIndex(array){
