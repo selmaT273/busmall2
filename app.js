@@ -5,6 +5,7 @@ function Product(name) {
   this.name = name;
   this.filePath = `img/${name}.jpg`;
   this.timesShown = 0;
+  this.timesClicked = 0;
 };
 
 const imageNames = [
@@ -52,7 +53,7 @@ function populate() {
     randomIndexTwo = generateRandomIndex(products);
     randomIndexThree = generateRandomIndex(products); 
   }
-  
+
   let optionOne = products[randomIndexOne];
   optionOne.timesShown++;
   console.log(`${optionOne.name} was shown`,optionOne.timesShown);
@@ -78,8 +79,12 @@ optionTwoImage.addEventListener('click', handleClick);
 optionThreeImage.addEventListener('click', handleClick);
 
 function handleClick(event) {
+  let productClicked = products.find(product => product.name === event.target.alt);
+  productClicked.timesClicked+= 1;
+
+  console.log(productClicked.timesClicked);
+  
   populate();
-  // console.log(`${event.target.alt} was clicked`);
 } 
 
 function generateRandomIndex(array){
