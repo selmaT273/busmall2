@@ -30,7 +30,10 @@ const imageNames = [
   'sweep'
 ];
 
+let votingRounds = 5;
+
 let products = [];
+
 
 for(let i = 0; i < imageNames.length; i++) {
   products.push(new Product(imageNames[i]));
@@ -70,6 +73,8 @@ function populate() {
   optionTwoImage.setAttribute('alt', optionTwo.name);
   optionThreeImage.setAttribute('src', optionThree.filePath);
   optionThreeImage.setAttribute('alt', optionThree.name);
+
+  votingRounds-= 1;
 }
 
 populate();
@@ -78,14 +83,25 @@ optionOneImage.addEventListener('click', handleClick);
 optionTwoImage.addEventListener('click', handleClick);
 optionThreeImage.addEventListener('click', handleClick);
 
+let footer = document.getElementById('footer');
+
 function handleClick(event) {
   let productClicked = products.find(product => product.name === event.target.alt);
   productClicked.timesClicked+= 1;
 
   console.log(productClicked.timesClicked);
-  
+
+  if(votingRounds === 0){
+    optionOneImage.removeEventListener('click', handleClick);
+    optionTwoImage.removeEventListener('click', handleClick);
+    optionThreeImage.removeEventListener('click', handleClick);
+    footer.textContent = 'done!!!';
+  };
+
   populate();
-} 
+}
+
+
 
 function generateRandomIndex(array){
   let min = 0;
