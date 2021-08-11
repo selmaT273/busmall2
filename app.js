@@ -47,6 +47,12 @@ function populate() {
   let randomIndexTwo = generateRandomIndex(products);
   let randomIndexThree = generateRandomIndex(products);
   
+  while (randomIndexOne === randomIndexTwo || randomIndexOne === randomIndexThree || randomIndexTwo === randomIndexThree){
+    randomIndexOne = generateRandomIndex(products);
+    randomIndexTwo = generateRandomIndex(products);
+    randomIndexThree = generateRandomIndex(products); 
+  }
+  
   let optionOne = products[randomIndexOne];
   optionOne.timesShown++;
   console.log(`${optionOne.name} was shown`,optionOne.timesShown);
