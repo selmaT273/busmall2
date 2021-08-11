@@ -95,7 +95,14 @@ function handleClick(event) {
     optionOneImage.removeEventListener('click', handleClick);
     optionTwoImage.removeEventListener('click', handleClick);
     optionThreeImage.removeEventListener('click', handleClick);
-    footer.textContent = 'done!!!';
+    
+
+    for(let i = 0; i < products.length; i++){
+      let productName = products[i].name;
+      let productTimesShown = products[i].timesShown;
+      let productVotes = products[i].timesClicked;
+      footer.textContent += `${productName} was shown ${productTimesShown} times and was clicked on ${productVotes} times `;
+    }
   };
 
   populate();
