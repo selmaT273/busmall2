@@ -19,5 +19,10 @@ header {
 }
 
 main {
-  height: 80vh;
+  height: 50vh;
+}
+
+img {
+  display: inline-block;
+  width: 30%;
 }
