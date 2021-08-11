@@ -42,16 +42,24 @@ let optionOne = document.getElementById('option-1');
 let optionTwo = document.getElementById('option-2');
 let optionThree = document.getElementById('option-3');
 
-optionOne.setAttribute('src', products[generateRandomIndex(products)].filePath);
-optionTwo.setAttribute('src', products[generateRandomIndex(products)].filePath);
-optionThree.setAttribute('src', products[generateRandomIndex(products)].filePath);
+let randomIndexOne = generateRandomIndex(products);
+let randomIndexTwo = generateRandomIndex(products);
+let randomIndexThree = generateRandomIndex(products);
+
+optionOne.setAttribute('src', products[randomIndexOne].filePath);
+optionOne.setAttribute('alt', products[randomIndexOne].name);
+optionTwo.setAttribute('src', products[randomIndexTwo].filePath);
+optionTwo.setAttribute('alt', products[randomIndexTwo].name);
+optionThree.setAttribute('src', products[randomIndexThree].filePath);
+optionThree.setAttribute('alt', products[randomIndexThree].name);
 
 optionOne.addEventListener('click', handleClick);
 optionTwo.addEventListener('click', handleClick);
 optionThree.addEventListener('click', handleClick);
 
 function handleClick(event) {
-  console.log(event.target);
+  console.log(`${event.target.alt} was clicked`);
+
 } 
 
 function generateRandomIndex(array){
