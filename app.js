@@ -19,7 +19,7 @@ const imageNames = [
   'dog-duck',
   'dragon',
   'pen',
-  'pen-sweep',
+  'pet-sweep',
   'scissors',
   'shark',
   'tauntaun',
@@ -45,6 +45,12 @@ let optionThree = document.getElementById('option-3');
 optionOne.setAttribute('src', products[generateRandomIndex(products)].filePath);
 optionTwo.setAttribute('src', products[generateRandomIndex(products)].filePath);
 optionThree.setAttribute('src', products[generateRandomIndex(products)].filePath);
+
+optionOne.addEventListener('click', handleClick);
+
+function handleClick(event) {
+  console.log('option one was clicked');
+} 
 
 function generateRandomIndex(array){
   let min = 0;
