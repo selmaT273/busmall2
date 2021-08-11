@@ -47,13 +47,15 @@ optionTwo.setAttribute('src', products[generateRandomIndex(products)].filePath);
 optionThree.setAttribute('src', products[generateRandomIndex(products)].filePath);
 
 optionOne.addEventListener('click', handleClick);
+optionTwo.addEventListener('click', handleClick);
+optionThree.addEventListener('click', handleClick);
 
 function handleClick(event) {
-  console.log('option one was clicked');
+  console.log(event.target);
 } 
 
 function generateRandomIndex(array){
   let min = 0;
-  let max = array.length;
+  let max = array.length - 1;
   return Math.floor(Math.random() * (max - min + 1));
 }
